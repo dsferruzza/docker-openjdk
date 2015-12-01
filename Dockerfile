@@ -10,8 +10,8 @@ RUN apt-get update \
  openjdk-8-jdk
 
  # Show versions
-RUN java -v
-RUN javac -v
+RUN java -version
+RUN javac -version
 
 # Slim down image
 RUN apt-get clean \
