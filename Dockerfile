@@ -6,13 +6,12 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install tools
 RUN apt-get update \
- && apt-get install -y \
- openjdk-8-jdk
+ && apt-get install --no-install-recommends -y \
+ openjdk-8-jdk \
+ # Slim down image
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man/?? /usr/share/man/??_*
 
  # Show versions
 RUN java -version
 RUN javac -version
-
-# Slim down image
-RUN apt-get clean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man/?? /usr/share/man/??_*
